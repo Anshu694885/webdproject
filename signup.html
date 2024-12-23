@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 360px;
+            text-align: center;
+        }
+
+        .signup-container h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .social-login button {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            width: 48%;
+            font-size: 0.9rem;
+        }
+
+        .social-login button.google {
+            color: #db4437;
+        }
+
+        .social-login button.facebook {
+            color: #4267b2;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .form-group label {
+            display: block;
+            text-align: left;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .checkbox {
+            text-align: left;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox input {
+            margin-right: 0.5rem;
+        }
+
+        .signup-btn {
+            background-color: #ffb400;
+            border: none;
+            color: #fff;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .signup-btn:hover {
+            background-color: #e0a000;
+        }
+
+        .login-link {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const firstname = document.getElementById('firstname').value;
+                const lastname = document.getElementById('lastname').value;
+
+                if (!email || !firstname || !lastname) {
+                    alert('Please fill out all fields!');
+                } else {
+                    alert('Sign-up successful!');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Welcome to Reedsy</h1>
+        <div class="social-login">
+            <button class="google">Google</button>
+            <button class="facebook">Facebook</button>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" placeholder="First name">
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Last name">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" id="author" name="author">
+                <label for="author">Yes, I'm an author</label>
+            </div>
+
+            <button type="submit" class="signup-btn">Sign Up</button>
+        </form>
+
+        <a href="#" class="login-link">Already have an account? Log in</a>
+        
+        <!-- Link to index.html -->
+        <a href="index.html" class="home-link">Back to Home</a>
+    </div>
+</body>
+</html>

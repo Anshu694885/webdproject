@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost of Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background-color: #fff;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+
+        .book-details {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .book-details img {
+            width: 80px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-info {
+            font-size: 0.9rem;
+        }
+
+        .book-title {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .book-author {
+            color: #555;
+            margin: 0;
+        }
+
+        .book-actions {
+            text-align: right;
+        }
+
+        .book-actions input {
+            width: 60px;
+            padding: 0.3rem;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .book-actions span {
+            display: block;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .total-cost {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Store</h1>
+        <nav>
+            <a href="index.html">Go to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Select Your Books</h2>
+        <div id="bookList">
+            <!-- Books will be dynamically added here -->
+        </div>
+        <div class="total-cost" id="totalCost">Total Cost: ₹0</div>
+    </div>
+
+    <footer>
+        <p>Subscribe for special discounts</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </footer>
+
+    <script>
+        const books = [
+            { title: "Interaction Design Beyond HCI", author: "Jenny Preece", price: 750, image: "https://m.media-amazon.com/images/I/513FWpwWjqL._SX342_SY445_.jpg" },
+            { title: "Don't Make Me Think", author: "Steve Krug", price: 600, image: "https://m.media-amazon.com/images/I/71dAwTmZBKL._AC_UY327_FMwebp_QL65_.jpg" },
+            { title: "The Design of Everyday Things", author: "Don Norman", price: 850, image: "https://m.media-amazon.com/images/I/619ncDeLijL._AC_UY327_FMwebp_QL65_.jpg" },
+            { title: "UX for Beginners", author: "Joel Marsh", price: 550, image: "https://m.media-amazon.com/images/I/610H+k9YukL._AC_UY327_FMwebp_QL65_.jpg" },
+            { title: "Thinking with Type", author: "Ellen Lupton", price: 500, image: "https://m.media-amazon.com/images/I/71ZO6EyOZ3L._AC_UY327_FMwebp_QL65_.jpg" }
+        ];
+
+        const bookList = document.getElementById('bookList');
+        const totalCostElement = document.getElementById('totalCost');
+
+        let totalCost = 0;
+
+        books.forEach((book, index) => {
+            const bookItem = document.createElement('div');
+            bookItem.classList.add('book-item');
+
+            bookItem.innerHTML = `
+                <div class="book-details">
+                    <img src="${book.image}" alt="${book.title}">
+                    <div class="book-info">
+                        <p class="book-title">${book.title}</p>
+                        <p class="book-author">by ${book.author}</p>
+                        <p class="book-price">Price: ₹${book.price}</p>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <input type="number" id="quantity-${index}" min="0" value="0" data-price="${book.price}" data-index="${index}">
+                    <span>Subtotal: ₹0</span>
+                </div>
+            `;
+
+            bookList.appendChild(bookItem);
+
+            // Add event listener for quantity changes
+            const quantityInput = bookItem.querySelector(`#quantity-${index}`);
+            const subtotalElement = bookItem.querySelector('.book-actions span');
+
+            quantityInput.addEventListener('input', (e) => {
+                const quantity = parseInt(e.target.value, 10) || 0;
+                const price = parseInt(e.target.getAttribute('data-price'), 10);
+                const subtotal = quantity * price;
+
+                subtotalElement.textContent = `Subtotal: ₹${subtotal}`;
+
+                // Update total cost
+                updateTotalCost();
+            });
+        });
+
+        function updateTotalCost() {
+            totalCost = 0;
+
+            books.forEach((book, index) => {
+                const quantity = parseInt(document.getElementById(`quantity-${index}`).value, 10) || 0;
+                const price = book.price;
+                totalCost += quantity * price;
+            });
+
+            totalCostElement.textContent = `Total Cost: ₹${totalCost}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .book-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .book {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .book:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .book img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .book-title {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .book-author {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .book-rating {
+            margin-top: 0.5rem;
+        }
+
+        .stars {
+            color: gold;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .rating-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .rating-input select {
+            padding: 0.3rem;
+            margin-left: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Browse Books</h1>
+        <nav>
+            <a href="index.html">Go to Home</a>
+        </nav>
+    </header>
+
+    <div class="book-container" id="bookContainer">
+        <!-- Books will be dynamically added here -->
+    </div>
+
+    <footer>
+        <p>Subscribe for the latest reviews</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </footer>
+
+    <script>
+        const books = [
+            {
+                title: "Interaction Design Beyond HCI",
+                author: "Jenny Preece",
+                rating: 5,
+                image: "https://m.media-amazon.com/images/I/81roiazfA8L._SY466_.jpg"
+            },
+            {
+                title: "Don't Make Me Think",
+                author: "Steve Krug",
+                rating: 4,
+                image: "https://m.media-amazon.com/images/I/617rPny7-LL._SY466_.jpg"
+            },
+            {
+                title: "The Design of Everyday Things",
+                author: "Don Norman",
+                rating: 5,
+                image: "https://m.media-amazon.com/images/I/61QICOkQ5sL._SY466_.jpg"
+            },
+            {
+                title: "UX for Beginners",
+                author: "Joel Marsh",
+                rating: 4,
+                image: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSSpamTb8uN573n_xB9nG0gsXsykc-_abJe308n1ZODRa0fCmQLy25LT5oqQ4_IEOQWXWpwXC0pXCqxnBvGCg5NmUgL3DGUVX-r1HwkV3zZ"
+            },
+            {
+                title: "Thinking with Type",
+                author: "Ellen Lupton",
+                rating: 4,
+                image: "https://m.media-amazon.com/images/I/71ZO6EyOZ3L._SY466_.jpg"
+            }
+        ];
+
+        const bookContainer = document.getElementById('bookContainer');
+
+        books.forEach((book, index) => {
+            const bookElement = document.createElement('div');
+            bookElement.classList.add('book');
+
+            bookElement.innerHTML = `
+                <img src="${book.image}" alt="${book.title}">
+                <h3 class="book-title">${book.title}</h3>
+                <p class="book-author">by ${book.author}</p>
+                <div class="book-rating">${'★'.repeat(book.rating)}<span class="stars">${'☆'.repeat(5 - book.rating)}</span></div>
+                <div class="rating-input">
+                    <label for="rating-${index}">Rate this book:</label>
+                    <select id="rating-${index}" data-index="${index}">
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+            `;
+
+            bookContainer.appendChild(bookElement);
+        });
+
+        bookContainer.addEventListener('change', (event) => {
+            const selectElement = event.target;
+            if (selectElement.tagName === 'SELECT') {
+                const bookIndex = selectElement.getAttribute('data-index');
+                const newRating = parseInt(selectElement.value, 10);
+                books[bookIndex].rating = newRating;
+
+                // Update the displayed stars
+                const bookElements = document.querySelectorAll('.book');
+                const bookElement = bookElements[bookIndex];
+                const ratingDiv = bookElement.querySelector('.book-rating');
+                ratingDiv.innerHTML = `${'★'.repeat(newRating)}<span class="stars">${'☆'.repeat(5 - newRating)}</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

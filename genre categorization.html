@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre Categorization</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #b6f8ff, #14a1ff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #1472ff;
+            color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            background-color: #32CD32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #28a745;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .go-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #1E90FF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .go-home:hover {
+            background-color: #4682B4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Favorite Genre</h1>
+        <form id="genre-form">
+            <label for="genre">Select Genre:</label>
+            <select id="genre" name="genre" required>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+                <option value="science-fiction">Science Fiction</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="result"></p>
+        <a href="index.html" class="go-home">Go to Home</a>
+    </div>
+
+    <script>
+        document.getElementById('genre-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const genre = document.getElementById('genre').value;
+            const result = document.getElementById('result');
+
+            switch (genre) {
+                case 'action':
+                    result.textContent = 'You selected Action! Get ready for some excitement!';
+                    break;
+                case 'comedy':
+                    result.textContent = 'You selected Comedy! Time for some laughs!';
+                    break;
+                case 'drama':
+                    result.textContent = 'You selected Drama! Expect intense emotions!';
+                    break;
+                case 'horror':
+                    result.textContent = 'You selected Horror! Brace yourself for some scares!';
+                    break;
+                case 'romance':
+                    result.textContent = 'You selected Romance! Get ready for some heartwarming moments!';
+                    break;
+                case 'science-fiction':
+                    result.textContent = 'You selected Science Fiction! Explore futuristic worlds!';
+                    break;
+                default:
+                    result.textContent = 'Please select a genre!';
+            }
+        });
+    </script>
+</body>
+</html>

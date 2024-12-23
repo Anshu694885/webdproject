@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodreads Clone</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('book-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(90deg, #4CAF50, #2c6e49);
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Banner Section */
+        .banner {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .banner h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .banner p {
+            font-size: 18px;
+        }
+
+        /* Tab Styling */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            color: #4CAF50;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tab:hover, .tab.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Tab Content Styling */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Section Content Styling */
+        section h2 {
+            font-size: 28px;
+            color: #2c6e49;
+        }
+        section p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+    <script>
+        function openTab(event, tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-title">Goodreads Clone</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="add review.html">Review</a>
+            <a href="book price.html">Book Price</a>
+            <a href="genre categorization.html">Genre Categorization</a>
+            <a href="book browse.html">Book Browse</a>
+            <a href="confirmation.html">Confirmation</a>
+            <a href="read.html">Read</a>
+        </nav>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <h1>Announcing Readers' Favorite Books of 2024</h1>
+        <p>Discover the books that captured hearts and minds this year.</p>
+    </section>
+
+    <!-- Tabs Section -->
+    <div class="tabs">
+        <button class="tab active" onclick="openTab(event, 'review')">Review</button>
+        <button class="tab" onclick="openTab(event, 'book-price')">Book Price</button>
+        <button class="tab" onclick="openTab(event, 'genre')">Genre Categorization</button>
+        <button class="tab" onclick="openTab(event, 'browse')">Book Browse</button>
+        <button class="tab" onclick="openTab(event, 'confirmation')">Confirmation</button>
+        <button class="tab" onclick="openTab(event, 'read')">Read</button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="review" class="tab-content active">
+        <h2>Review</h2>
+        <p>Discover reviews and ratings for popular books.</p>
+    </div>
+    <div id="book-price" class="tab-content">
+        <h2>Book Price</h2>
+        <p>Find competitive prices for your favorite books.</p>
+    </div>
+    <div id="genre" class="tab-content">
+        <h2>Genre Categorization</h2>
+        <p>Explore books sorted by genres like fiction, mystery, and more.</p>
+    </div>
+    <div id="browse" class="tab-content">
+        <h2>Book Browse</h2>
+        <p>Browse through an extensive collection of books.</p>
+    </div>
+    <div id="confirmation" class="tab-content">
+        <h2>Confirmation</h2>
+        <p>Confirm your orders and preferences here.</p>
+    </div>
+    <div id="read" class="tab-content">
+        <h2>Read</h2>
+        <p>Start reading your selected books online or offline.</p>
+    </div>
+</body>
+</html>

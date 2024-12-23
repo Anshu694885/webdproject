@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Download Books</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            flex-direction: column;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-preview {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-image {
+            margin: 20px 0;
+        }
+
+        .book-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-details {
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #32CD32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #28a745;
+        }
+
+        .pdf-link {
+            color:green;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .pdf-link:hover {
+            color: #69ffe6;
+        }
+
+        .go-home {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #1E90FF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .go-home:hover {
+            background-color: #4682B4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Read and Download Your Favorite Books</h1>
+        
+        <!-- Book Preview Section -->
+        <div class="book-preview">
+            <p>Book Title: <strong>Example Book 1</strong></p>
+            <p>Author: <strong>John Doe</strong></p>
+        </div>
+        
+        <!-- Book Image Section -->
+        <div class="book-image">
+            <img src="book-cover.jpg" alt="Example Book 1 Cover">
+        </div>
+        
+        <!-- Book Description -->
+        <div class="book-details">
+            <p>This book is a fascinating exploration of science and philosophy. Dive deep into the world of knowledge and uncover the mysteries of the universe.</p>
+        </div>
+        
+        <!-- Download Button with Actual PDF Download -->
+        <a href="book.pdf" class="pdf-link" download="Example_Book_1.pdf">
+            <button>Download Book as PDF</button>
+        </a>
+
+        <!-- Go to Home Button -->
+        <a href="index.html" class="go-home">Go to Home</a>
+    </div>
+
+</body>
+</html>

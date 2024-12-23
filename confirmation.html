@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Review Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .confirmation-message {
+            background-color: #e7f4e4;
+            color: #2e7d32;
+            padding: 1rem;
+            text-align: center;
+            margin: 0;
+            font-size: 1rem;
+            border-bottom: 1px solid #c8e6c9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .book-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .book-header img {
+            max-width: 150px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-info {
+            flex-grow: 1;
+        }
+
+        .book-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .book-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        .book-rating {
+            margin-top: 0.5rem;
+            color: gold;
+            font-size: 1rem;
+        }
+
+        .book-meta {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .reviews {
+            margin-top: 2rem;
+        }
+
+        .review {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .review .stars {
+            color: gold;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Reviews</h1>
+        <nav>
+            <a href="index.html">Go to Home</a>
+        </nav>
+    </header>
+
+    <div class="confirmation-message">
+        Thank you for your review! It is under consideration and will be posted within 24 hours.
+    </div>
+
+    <div class="container">
+        <div class="book-header">
+            <img src="https://m.media-amazon.com/images/I/51avUtKUdtL._SY445_SX342_.jpg" alt="Book Cover">
+            <div class="book-info">
+                <h2 class="book-title">Interaction Design Beyond HCI</h2>
+                <p class="book-author">by Jenny Preece</p>
+                <div class="book-rating">★★★★☆</div>
+                <div class="book-meta">
+                    <p>Total Pages: 584</p>
+                    <p>ISBN: 978-0128009520</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <h3>Reviews (3)</h3>
+            <div class="review">
+                <p><strong>Excellent book!</strong></p>
+                <p class="stars">★★★★★</p>
+                <p>Very informative and helpful for understanding HCI concepts.</p>
+            </div>
+            <div class="review">
+                <p><strong>Great resource for designers.</strong></p>
+                <p class="stars">★★★★☆</p>
+                <p>The book provides a detailed overview of interaction design principles.</p>
+            </div>
+            <div class="review">
+                <p><strong>Good for beginners.</strong></p>
+                <p class="stars">★★★★☆</p>
+                <p>It helped me get started with interaction design and HCI topics.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Subscribe for the latest reviews</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </footer>
+</body>
+</html>
